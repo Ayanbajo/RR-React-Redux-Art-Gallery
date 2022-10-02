@@ -3,7 +3,7 @@
 import { createSlice } from '@reduxjs/toolkit';
  
 const initialState = {
-    objectId: 12770 ,
+    objectId: 10245,
     apiData: {}
  }
 
@@ -12,7 +12,7 @@ const initialState = {
 name: 'data',
 initialState,
 reducers:{
-    clearData: (state, action) => {
+    setData: (state, action) => {
         return {...state, apiData: action.payload}
     },
     // Re-setting state back to initial values
@@ -21,11 +21,11 @@ reducers:{
     },
     // Incrementing the ID by one
     incrementId: (state) => {
-        return {...state, objectId: state.payload + 1}
+        return {...state, objectId: state.objectId + 1}
     },
     // Decrementing the ID by one
     decrementId: (state) => {
-        return {...state, objectId: state.payload - 1}
+        return {...state, objectId: state.objectId - 1}
     },
     // Entering a custom ID
     inputId: (state, action) => {
