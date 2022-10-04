@@ -3,7 +3,7 @@ import { useSelector, useDispatch, connect } from 'react-redux'
 import {clearData, incrementId, decrementId, inputId, fetchData } from './features/dataSlice';
 import { useEffect } from 'react';
 
-function App() {
+function App(props) {
   const dispatch = useDispatch()
   const data = useSelector((state) => state.data)
   
@@ -14,9 +14,9 @@ function App() {
       return <p>No image found</p>
     }
   }
-  // useEffect(() => {
-  //   dispatch(fetchData())
-  // }, [props.objectId, dispatch])
+  useEffect(() => {
+    dispatch(fetchData())
+  }, [props.objectId, dispatch])
 
   return (
     <div className="App">
