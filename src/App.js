@@ -1,6 +1,7 @@
 import './App.css';
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch, connect } from 'react-redux'
 import {clearData, incrementId, decrementId, inputId, fetchData } from './features/dataSlice';
+import { useEffect } from 'react';
 
 function App() {
   const dispatch = useDispatch()
@@ -13,6 +14,9 @@ function App() {
       return <p>No image found</p>
     }
   }
+  // useEffect(() => {
+  //   dispatch(fetchData())
+  // }, [props.objectId, dispatch])
 
   return (
     <div className="App">
@@ -25,11 +29,14 @@ function App() {
       <input value={data.objectId} onChange={(e) => {dispatch(inputId(Number(e.target.value)))}} />
       <div>
         {data.objectID}
-        {renderImg()}
-        
+        {renderImg()}       
       </div>
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => ({objectId: state.data.objectId })
+
+export default connect(mapStateToProps)(App)
+
+
